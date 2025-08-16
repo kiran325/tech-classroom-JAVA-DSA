@@ -1,0 +1,213 @@
+🔹 Git Basics
+
+What is Git and GitHub?
+	•	Git keeps track of every change you make in your project (like a timeline).
+	•	GitHub allows you to upload (push) your Git projects online and share with others.
+
+
+Why are we using Git and GitHub?
+	•	To track changes in code.
+	•	To collaborate with teammates.
+	•	To rollback mistakes if something breaks.
+
+
+Downloading Git
+	•	Install Git from: https://git-scm.com/downloads
+	•	Verify installation:
+					git --version
+
+Some Basic Linux Commands (needed for Git)
+	•	pwd → print working directory (where you are).
+	•	ls → list files.
+	•	cd foldername → go inside a folder.
+	•	mkdir project → create a folder.
+	•	rm file.txt → delete file.
+
+
+🔹 Working with a Repository
+
+Initializing a Git Repository
+	1.	Create a project folder: mkdir myproject && cd myproject
+	2.	Initialize Git: git init (This creates a hidden .git folder that tracks your changes.)
+	
+
+Making the First Change
+	•	Create a file: echo "Hello Git" > hello.txt or touch hello.txt
+
+Staging the First Change
+	•	Stage (add to Git’s staging area): git add hello.txt
+
+Committing the First Change
+	•	Commit = save the staged changes in Git history: git commit -m "First commit: added hello.txt"
+
+Adding Data to Files
+	•	Open and edit hello.txt.
+	•	Stage and commit again: git add hello.txt
+						git commit -m "Updated hello.txt with new content"
+
+Removing Changes from Stage
+	•	To unstage a file: git reset hello.txt
+
+Viewing the History
+	•	See commit history: git log --oneline
+
+
+Making Few More Commits
+	•	Keep editing files, adding (git add) and committing (git commit).
+
+Removing a Commit from History
+	•	Move back one commit: git reset --hard HEAD~1
+
+🔹 Stashing Changes
+	•	Save unfinished work without committing: git stash
+	•	Restore it later: git stash pop
+	•	Clear all stashes: git stash clear
+
+🔹 GitHub Basics
+
+Creating a Repository on GitHub
+	1.	Go to GitHub → New Repository → Name it myproject.
+	2.	Copy the repo link (HTTPS or SSH).
+
+Connecting Local Repo to GitHub: git remote add origin https://github.com/username/myproject.git
+
+Pushing Local Changes: git push -u origin main
+
+
+
+🔹 Branching
+
+What are Branches?
+	•	Branch = separate line of development.
+	•	main (or master) is the default branch.
+
+⸻
+
+Use of Branches
+	•	Develop features independently without disturbing the main branch.
+
+⸻
+
+Creating and Switching Branch: git branch feature1
+					  git checkout feature1
+                                                      (or simply:)       git checkout -b feature1
+
+Merging Branch to Main: git checkout main
+				 git merge feature1
+
+Pushing Branches: git push origin feature1
+
+
+
+🔹 Working with Forks & Collaboration
+
+Why Fork and How to Fork?
+	•	Fork = create your own copy of someone else’s GitHub repo.
+	•	Useful when contributing to open source.
+
+⸻
+
+Cloning a Forked Project: git clone https://github.com/yourusername/forkedproject.git
+
+
+Upstream
+	•	Origin = your fork.
+	•	Upstream = the original project repo.
+	•	Add upstream: git remote add upstream https://github.com/originalowner/project.git
+
+
+
+Pull Request (PR)
+	•	A PR asks the original repo owner to review and merge your changes.
+
+Steps:
+	1.	Fork project.
+	2.	Create a branch.
+	3.	Commit changes.
+	4.	Push branch.
+	5.	On GitHub, click New Pull Request.
+
+⸻
+
+Never Commit on Main
+	•	Always create a new branch for changes.
+	•	This avoids messy histories.
+
+⸻
+
+Updating PR (Force Push)
+
+If you need to change commits in a PR: git commit --amend
+						    git push origin branch-name --force
+
+
+Merging a Pull Request
+	•	Repo owner can merge PR once reviewed.
+
+⸻
+
+Keeping Fork Updated: git fetch upstream
+			    git merge upstream/main
+
+
+
+
+🔹 Advanced Git
+
+Squashing Commits
+
+Combine multiple commits into one: git rebase -i HEAD~3
+	•	Change pick to squash for extra commits.
+	•	Save → write a clean commit message.
+
+Using Rebase
+	•	Rebase = rewrite commit history.
+	•	Example: git checkout feature
+			   git rebase main
+
+Reset with Hard Flag
+	•	Move back and delete changes: git reset --hard HEAD~1
+
+
+
+Merge Conflicts
+	•	Happen when two branches change the same lines of code.
+	•	Git marks conflicts with: <<<<<<< HEAD
+							Your changes
+								=======
+							Other branch changes
+								>>>>>>> branchname
+	•	Manually edit file, keep correct changes.
+	•	Then: git add conflictedfile.txt
+			git commit
+
+
+
+Additionally Bonus Points:
+
+git diff shows the line-by-line changes between:
+	•	Your working directory and the staging area
+	•	Or between commits/branches
+
+🔹 Common Uses
+	1.	See unstaged changes (what you edited but haven’t added yet): git diff
+	2.	See staged changes (what you added with git add, waiting to commit): git diff --staged
+	3.	Compare two commits: git diff commit1 commit2
+	4.	Compare branches: git diff branch1 branch2
+
+🔹 Example
+
+Say your file names.txt changed from: kiran, ravi to: kiran, ravi, suresh
+
+git diff would show: @@ -1,2 +1,3 @@
+ 				kiran
+ 				ravi
+				+suresh
+Here:
+	•	+suresh → line was added
+	•	A minus (-) would mean a removed line
+
+
+
+
+
