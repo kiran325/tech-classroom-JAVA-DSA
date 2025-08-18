@@ -1,0 +1,130 @@
+Flowchart:
+
+•A flowchart is a visual diagram that shows the flow of a program or process step by step.
+•It uses symbols:
+•Oval (⬤) → Start / End
+•Rectangle (□) → Process / Calculation
+•Diamond (◇) → Decision (Yes/No or True/False)
+•Parallelogram (⧫) → Input / Output
+•It makes logic easy to understand at a glance.
+
+General Flow Diagram Structure:  
+
+   ⬤ Start
+      ↓
+  ⧫ Input
+      ↓
+  □ Process
+      ↓
+  ◇ Decision
+   ↙     ↘
+ □ StepA  □ StepB
+      ↓
+   ⬤ End
+
+
+1.Example – Salary & Bonus
+
+Problem: If salary of a person is 20,000 → give ₹2000 bonus, else ₹1000.
+
+Flowchart
+
+   ⬤ Start
+      ↓
+  ◇ Input Salary
+      ↓
+  ◇ Is Salary = 20000 ?
+   ↙              ↘
+ □ Bonus = 2000   □ Bonus = 1000
+   ↘              ↙
+      ↓
+  ◇ Print Bonus
+      ↓
+   ⬤ End
+
+
+2. Example – Check Prime Number
+
+Problem: Check whether a given number is prime or not.
+
+Flowchart
+
+   ⬤ Start
+      ↓
+  ◇ Input Number
+      ↓
+  □ Set flag = true
+      ↓
+  □ Check divisibility from 2 to n-1
+      ↓
+  ◇ Is number divisible by any i?
+   ↙              ↘
+ □ flag = false   □ continue
+   ↓                  ↓
+  ◇ After loop, is flag = true?
+   ↙              ↘
+ □ Print Prime   □ Print Not Prime
+      ↓
+   ⬤ End
+
+
+
+
+Pseudocode:
+
+•Pseudocode is a plain English description of program steps, written in a way that looks like code but is not actual programming.
+•It is independent of any programming language.
+•It helps programmers plan logic before coding.
+
+General Pseudocode Structure:
+
+BEGIN
+   INPUT data
+   PROCESS the data
+   IF condition is true THEN
+       Do step A
+   ELSE
+       Do step B
+   ENDIF
+   OUTPUT result
+END
+
+
+1.Example – Salary & Bonus
+Problem: If salary of a person is 20,000 → give ₹2000 bonus, else ₹1000.
+
+START
+  INPUT salary
+  IF salary = 20000 THEN
+       bonus ← 2000
+  ELSE
+       bonus ← 1000
+  ENDIF
+  PRINT bonus
+END
+
+
+2. Example – Check Prime Number
+Problem: Check whether a given number is prime or not.
+
+START
+  INPUT number
+  flag ← true
+
+  FOR i ← 2 TO number-1 DO
+       IF number % i = 0 THEN
+            flag ← false
+            BREAK
+       ENDIF
+  ENDFOR
+
+  IF flag = true THEN
+       PRINT "Prime"
+  ELSE
+       PRINT "Not Prime"
+  ENDIF
+END
+
+
+
+

@@ -1,0 +1,122 @@
+Types of languages
+Procedural
+Functional
+Object Oriented
+
+Procedural
+- specifies a series of well-structured steps and procedures to compose a program.
+- Contains a systematic order of statements, Functions and commands to complete a task.
+
+Functional
+- Writing a program only in pure functions i.e. never modify variables, but only create new ones as an output.
+- Used in situations where we have to perform lots of different operations on the same set of data, like ML.
+- First class functions?
+
+Object Oriented
+- Revolves around objects
+- Code + Data = Object
+- Developed to make it easier to develop, debug, reuse, and maintain software.
+
+Static vs Dynamic Languages
+
+Static: 
+- Perform type checking at compile time 
+- Errors will show at compile time
+- Declare datatype before you use it 
+- More control
+
+Dynamic:
+- Perform type checking at runtime
+- Error might not show till program is run
+- No need to declare datatype of variables
+- Saves time in writing code but might give error at runtime
+
+Stack Memory
+
+1.Stores local variables, method call details, and function parameters.
+2.Memory allocation is static (done at compile-time).
+3.Faster access compared to heap.
+4.Size is smaller and limited (a few MBs).
+5.Memory is automatically managed (created when method starts, destroyed when method ends).
+6.Follows LIFO (Last In First Out) structure.
+7.Cannot be resized at runtime.
+8.Error type: Stack Overflow (e.g., deep recursion).
+9.Data is short-lived (exists only during method execution).
+10.No memory fragmentation.
+
+
+Heap Memory
+
+1.Stores objects, arrays, and reference types.
+2.Memory allocation is dynamic (done at runtime).
+3.Slower access compared to stack.
+4.Size is larger (can be GBs, depends on system).
+5.Managed manually (C/C++) or by Garbage Collector (Java/Python).
+6.Does not follow LIFO, memory allocated anywhere in free space.
+7.Can be resized at runtime.
+8.Error types: Memory Leak or Out of Memory.
+9.Data is long-lived (exists until explicitly freed or GC removes it).
+10.Can suffer from fragmentation.
+
+Stack → Fast, Small, Short-lived, Auto-managed.
+Heap → Large, Slower, Long-lived, Needs GC/manual free.
+
+🥞 Stack (like a plate stack in a cafeteria)
+	•You always put the new plate on top and remove the top one first (LIFO).
+	•Fast and organised, but limited in height (small size).
+	•Once you take a plate out, it’s gone automatically (auto memory management).
+
+⸻
+
+🚗 Heap (like a parking lot)
+	•Cars (objects) can be parked anywhere in the free space (not ordered).
+	•Slower to find a space, but can hold many cars (large size).
+	•A car stays until the owner takes it out (manual delete/garbage collector).
+	•If cars are parked badly, empty spaces remain unused (fragmentation).
+
+⸻
+
+👉 So in interviews:
+	•Stack → cafeteria plate stack (fast, ordered, auto-managed)
+	•Heap → parking lot (big, flexible, manual/GC managed)
+
+🔹 What is GC?
+
+Garbage Collection (GC) is a process in programming languages like Java, C#, Python (partly) that automatically reclaims memory occupied by objects that are no longer used by the program.
+
+Without GC, you’d have to manually free memory (like in C/C++ with free()), which is error-prone and can cause memory leaks.
+
+⸻
+
+🔹 How does GC work? (Java Example)
+
+1.Allocation in Heap
+	•When you create an object (new keyword in Java), it gets memory in the Heap.
+2.Reachability Check
+	•GC checks if an object is reachable (still referenced by any variable, method, or active thread).
+	•If no one is pointing to it, it’s considered garbage.
+Example: String s = new String("Hello");
+		  s = null;  // "Hello" object is now garbage
+
+3.Mark-and-Sweep Algorithm (common approach)
+	•Mark phase: GC scans memory and marks objects that are reachable.
+	•Sweep phase: Unmarked (unreachable) objects are cleared from Heap, freeing space.
+4.Generational GC (Optimization in Java)
+	•Heap is divided into Young Generation (new objects) and Old Generation (long-lived objects).
+	•Most objects die young, so GC frequently cleans Young Gen, and less often cleans Old Gen → makes it 	 faster.
+
+⸻
+
+🔹 Real-World Analogy
+
+Think of a messy parking lot (Heap):
+	•Cars = Objects
+	•If a car owner leaves and never comes back (no references), the parking staff (GC) will eventually tow 	 it away → making space for new cars.
+
+⸻
+
+🔹 Key Points to Remember for Interviews
+	•GC runs automatically (can’t force it, only request using System.gc() in Java).
+	•Prevents memory leaks by cleaning unused objects.
+	•Uses algorithms like Mark-Sweep, Copying, Generational GC.
+	•Can cause Stop-the-World pause when cleaning (small delay in app).
