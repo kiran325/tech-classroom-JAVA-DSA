@@ -3,6 +3,7 @@ package ExecuteJava;
 public class swapTwoNumbers {
 
 	public static void main(String[] args) {
+		
 		// Swapping 2 integer different methods 
 		
 		int a = 5;
