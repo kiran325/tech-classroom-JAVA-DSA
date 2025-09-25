@@ -3,17 +3,17 @@ package ExecuteJava;
 public class evenorodd {
 
 	public static void main(String[] args) {
-		// Validate number is even or odd 
+		// Find the number is even or odd
 		
-		int num = 18;
+		int num = 1;
 		
 		if(num%2==0) {
-			System.out.println(num + " Number is Even");
-		}
-		else {
-			System.out.println(num + " Number is Odd");
+			System.out.println("Number is odd ");
 		}
 		
+		else {
+			System.out.println("Number is even");
+		}
 	}
 
 }
