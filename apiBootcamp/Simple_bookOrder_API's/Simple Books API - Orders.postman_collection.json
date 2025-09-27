@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "caafa843-f988-4265-91de-b01ec50e736b",
+		"name": "Simple Books API - Orders",
+		"description": "Collection for submitting, updating, retrieving, and deleting orders using the Simple Books API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37045528"
+	},
+	"item": [
+		{
+			"name": "accessToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const accessToken = pm.response.json().accessToken;\r",
+							"//Print the value of id in the console of postman \r",
+							"console.log(accessToken);\r",
+							"\r",
+							"//Variable define -- can be anything can be name \r",
+							"pm.environment.set(\"accessToken\", accessToken);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is JSON\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status text is Created\", function () {\r",
+							"    pm.expect(pm.response.reason()).to.eql(\"Created\");\r",
+							"});\r",
+							"\r",
+							"if (accessToken) {\r",
+							"    pm.environment.set(\"accessToken\", accessToken);\r",
+							"    console.log(\"accessToken saved:\", accessToken);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"clientName\": \"Postman\",\n    \"clientEmail\": \"kiran{{$randomInt}}r@example.com\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.click/api-clients/",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"click"
+					],
+					"path": [
+						"api-clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit an Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"const orderId = jsonData.orderId;\r",
+							"//Print the value of id in the console of postman \r",
+							"console.log(orderId);\r",
+							"\r",
+							"//Variable define -- can be anything can be name \r",
+							"pm.environment.set(\"orderId\", orderId);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is JSON\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status text is Created\", function () {\r",
+							"    pm.expect(pm.response.reason()).to.eql(\"Created\");\r",
+							"});\r",
+							"\r",
+							"if (jsonData.orderId) {\r",
+							"    pm.environment.set(\"orderId\", jsonData.orderId);\r",
+							"    console.log(\"OrderId saved:\", jsonData.orderId);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bookId\": 4,\n  \"customerName\": \"KK_325\"\n}"
+				},
+				"url": {
+					"raw": "https://simple-books-api.click/orders",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"click"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"timestamp\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"timestamp\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"OK\", function () {\r",
+							"    pm.expect(pm.response.reason()).to.eql(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "orderId",
+						"value": "{{orderId}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://simple-books-api.click/orders/{{orderId}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"click"
+					],
+					"path": [
+						"orders",
+						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"No Content\", function () {\r",
+							"    pm.expect(pm.response.reason()).to.eql(\"No Content\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "orderId",
+						"value": "{{orderId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customerName\": \"KK_325\"\n}"
+				},
+				"url": {
+					"raw": "https://simple-books-api.click/orders/{{orderId}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"click"
+					],
+					"path": [
+						"orders",
+						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Order",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{accessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "orderId",
+						"value": "{{orderId}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://simple-books-api.click/orders/{{orderId}}",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"click"
+					],
+					"path": [
+						"orders",
+						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "<YOUR_ACCESS_TOKEN>"
+		},
+		{
+			"key": "orderId",
+			"value": ""
+		}
+	]
+}
