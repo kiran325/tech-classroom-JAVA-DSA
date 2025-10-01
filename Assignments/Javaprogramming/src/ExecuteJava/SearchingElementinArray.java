@@ -4,7 +4,7 @@ public class SearchingElementinArray {
 
 	public static void main(String[] args) {
 
-		// Searching Element in array using boolean and for loop 
+		// Searching Element in array using boolean and for loop (Linear Search)
 		
 		int a[]= {10,20,30,40,50};
 		int search_element = 20;
@@ -26,7 +26,7 @@ public class SearchingElementinArray {
 		
 */
 		
-		// Searching Element in array using boolean and for each loop
+		// Searching Element in array using boolean and for each loop (Linear Search)
 		
 		for(int x:a) {
 			if (x==search_element) {
