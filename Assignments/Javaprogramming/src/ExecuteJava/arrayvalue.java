@@ -3,7 +3,7 @@ package ExecuteJava;
 public class arrayvalue {
 
 	public static void main(String[] args) {
-		// print 2/multi dimentional array 
+		// print multi dimentional array 
 		
 		int a[][]= { {0,1,4},{2,3,6},{4,5,5},{6,7,0} };
 		
