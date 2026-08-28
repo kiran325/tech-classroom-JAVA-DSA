@@ -20,10 +20,13 @@ public class ExceptionDemo {
 		}
 		
 		catch(Exception e){
-			System.out.println("Invalid Data...");
+			System.out.println("Handled Exception...");
 			System.out.println(e.getMessage());
 		}
 		
+		finally {
+			System.out.println("Finally program executed...");
+		}
 	}
 
 }
