@@ -5,8 +5,8 @@
     <classes>
       <class name="tests.SmokeTests">
         <methods>
-          <include name="setUp"/>
           <include name="testLogout"/>
+          <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- tests.SmokeTests -->

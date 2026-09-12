@@ -8,10 +8,11 @@
 
     <!-- SELENIUM WEBDRIVER -->
     <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.23.0</version>
-    </dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.48.0</version>
+    <scope>compile</scope>
+  </dependency>
 
     <!-- TESTNG -->
     <dependency>
