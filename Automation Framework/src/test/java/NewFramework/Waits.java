@@ -51,7 +51,7 @@ public class Waits {
         }
 
         driver.quit();
-        System.out.println("Test case Passed");
+        System.out.println("Test case Passed");  
 
 	}
 

@@ -11,6 +11,37 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GoogleApps {
 
     public static void main(String[] args) {
+    	
+ /*   	
+    	// 1. Launch Chrome
+        WebDriver driver = new ChromeDriver();
+        
+        // 2. Open Google
+        driver.get("https://www.google.com");
+        
+        // 3. Maximize browser
+        driver.manage().window().maximize();
+        
+        // 4. Click Google Apps icon
+        driver.findElement(
+                By.cssSelector("a[aria-label='Google apps']")
+        ).click();
+        
+        // 5. Switch to Google Apps iframe
+        driver.switchTo().frame(
+                driver.findElement(
+                        By.cssSelector("iframe[src*='ogs.google.com']")
+                )
+        );
+        
+        // 6. Click YouTube
+        driver.findElement(
+                By.xpath("//li/a//span[normalize-space()='YouTube']")
+        ).click();
+        driver.quit();
+        System.out.println("TestCase Passed");
+    	
+ */	
 
         // 1. Launch Chrome
         WebDriver driver = new ChromeDriver();
@@ -40,7 +71,6 @@ public class GoogleApps {
 
         // 8. Quit browser
         driver.quit();
-        
         System.out.println("TestCase Passed");
     }
 }
